@@ -20,16 +20,16 @@ export class CardComponent implements OnInit  {
   
   @Input() oneProduct : ProductData = {} as ProductData;
 
-  checked : boolean = false;
+  checked = signal<boolean>(false);
   id = Math.random().toString(36).substring(2, 9); // unique id
 
   ngOnInit(): void {
-    this.checked = this.wishListService.isInWishlist(this.oneProduct._id);
+    this.checked.set(this.wishListService.isInWishlist(this.oneProduct._id));
   }
 
   onToggle(event: Event, pId : string|null) {
-    this.checked = !this.checked;
-    if (this.checked) {
+    this.checked.set(!this.checked());
+    if (this.checked()) {
       this.wishListService.addProductToWishlist(pId).subscribe({
         next : (res) => {
           this.toastrService.success(res.message, "Wish List operations!");

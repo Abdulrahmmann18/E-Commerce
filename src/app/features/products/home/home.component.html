@@ -1,0 +1,39 @@
+<div class="my-20 p-8">
+    <div class="grid grid-cols-10 w-full md:w-[95%] lg:w-[90%] mx-auto">
+        <div class="col-span-5 md:col-span-6">
+            <app-main-slider></app-main-slider>
+        </div>
+        <div class="col-span-5 md:col-span-4">
+            <div class="static-images flex flex-col">
+                <img src="/images/bags.jpg" class="h-[200px] md:h-[220px]" alt="bags">
+                <img src="/images/gettar.jpg" class="h-[200px] md:h-[220px]" alt="gettar">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="my-8 w-1/3 mx-auto h-[0.7px] bg-green-600"></div>
+<div class="my-8 w-2/3 mx-auto h-[0.7px] bg-green-600"></div>
+<div class="my-8 w-1/3 mx-auto h-[0.7px] bg-green-600"></div>
+
+<div class="my-14 p-8">
+    <div class="w-full md:w-[95%] lg:w-[90%] mx-auto">
+        <h2 class="text-green-600 text-4xl text-center m-8">All Categories</h2>
+        <app-categories-slider [allCategories]="allCategories()"></app-categories-slider>
+    </div>
+</div>
+
+
+<div class="my-8 w-1/3 mx-auto h-[0.7px] bg-gray-400"></div>
+<div class="my-8 w-2/3 mx-auto h-[0.7px] bg-gray-400"></div>
+<div class="my-8 w-1/3 mx-auto h-[0.7px] bg-gray-400"></div>
+
+<div class="my-14 p-8">
+    <div class="w-full md:w-[95%] lg:w-[90%] mx-auto">
+        <h2 class="text-green-600 text-4xl text-center m-8">All Products</h2>
+        <app-products></app-products>
+    </div>
+
+</div>

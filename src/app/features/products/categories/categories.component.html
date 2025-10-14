@@ -1,0 +1,20 @@
+<div class="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
+    @for (item of allCategories(); track item._id) {
+    <div class="text-center shadow-lg py-2 rounded-lg hover:shadow-xlg hover:shadow-green-700 transition-all"
+        (click)="getAllSubCategories(item._id, item.name)">
+        <img [src]="item.image" [alt]="item.name" class="h-[400px] w-full">
+        <h2 class="text-center text-2xl text-green-700 py-4">{{item.name}}</h2>
+    </div>
+    }
+</div>
+
+@if (!subCategoriesAreHidden()) {
+<h2 class="text-gray-700 text-4xl text-center m-8 mt-20">{{clickedCatName()}} Sub-Categories</h2>
+<div class="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
+    @for (item of subCategories(); track item._id) {
+    <div class="text-center shadow-lg py-2 rounded-lg hover:shadow-xlg hover:shadow-green-700 transition-all">
+        <h2 class="text-center text-2xl text-green-700 py-4">{{item.name}}</h2>
+    </div>
+    }
+</div>
+}

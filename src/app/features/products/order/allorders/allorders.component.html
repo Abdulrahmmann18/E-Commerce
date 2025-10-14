@@ -1,0 +1,81 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-green-600 uppercase bg-gray-100 dark:bg-gray-700 dark:text-green-400">
+            <tr>
+                <th scope="col" class="px-5 py-3">
+                    Shipping User Name
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    Shipping User Email
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    Shipping User Phone
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    Shipping User Id
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    created At
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    updated At
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    paid At
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    is Paid
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    is Delivered
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    total Order Price
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    payment Method
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of stripeUserOrders(); track item._id) {
+            <tr>
+                <th scope="col" class="px-5 py-3">
+                    {{item.user.name}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.user.email}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.user.phone}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.user._id}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.createdAt | date}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.updatedAt | date}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.paidAt | date}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.isPaid}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.isDelivered}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.totalOrderPrice}}
+                </th>
+                <th scope="col" class="px-5 py-3">
+                    {{item.paymentMethodType}}
+                </th>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

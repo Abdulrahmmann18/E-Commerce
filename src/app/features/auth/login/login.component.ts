@@ -3,6 +3,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NavlinksService } from '../../../core/services/navLinks/navlinks.service';
+import { WishListService } from '../../../core/services/wish-list/wish-list.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   private authService : AuthService = inject(AuthService);
   private router : Router = inject(Router);
   private navlinksService : NavlinksService = inject(NavlinksService);
+  private wishListService : WishListService = inject(WishListService);
 
   ngOnInit(): void {
     this.navlinksService.setNavLinksStates(true, false, false);
@@ -46,6 +48,12 @@ export class LoginComponent implements OnInit {
             this.authService.setUserData();
             // 3- go to home page  
             this.router.navigate(['/home']); 
+            this.wishListService.getLoggedUserWishlist().subscribe({
+              next : (res) => {
+                this.wishListService.wishlistIds.next(res.data.map((item : any) => item._id));
+                console.log(this.wishListService.wishlistIds.getValue());
+              }
+            })
           }, 1000);
         },
         error : (err) => {   

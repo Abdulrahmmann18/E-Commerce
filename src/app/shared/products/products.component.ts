@@ -28,12 +28,6 @@ export class ProductsComponent {
         this.allProducts.set(res.data);
       }
     })
-    this.wishListService.getLoggedUserWishlist().subscribe({
-      next : (res) => {
-        this.wishListService.wishlistIds.next(res.data.map((item : any) => item._id));
-        console.log(this.wishListService.wishlistIds.getValue());
-      }
-    })
   }
 
 

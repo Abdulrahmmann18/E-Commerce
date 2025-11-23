@@ -77,10 +77,10 @@
 
     <div class="btns">
         <button [disabled]="totalPrice() == 0" (click)="clearCart()"
-            class="mx-4 text-xl bg-red-600 text-white p-6 rounded-full hover:bg-red-700 disabled:bg-red-300 disabled:cursor-not-allowed cursor-pointer">Clear
+            class="mx-4 text-xl bg-red-600 text-white p-3 md:p-5 rounded-full hover:bg-red-700 disabled:bg-red-300 disabled:cursor-not-allowed cursor-pointer">Clear
             Cart</button>
         <button [disabled]="totalPrice() == 0" (click)="requestOrder()"
-            class="mx-4 text-xl bg-green-600 text-white p-6 rounded-full hover:bg-green-700 disabled:bg-green-300 disabled:cursor-not-allowed cursor-pointer">
+            class="mx-4 text-xl bg-green-600 text-white p-3 md:p-5 rounded-full hover:bg-green-700 disabled:bg-green-300 disabled:cursor-not-allowed cursor-pointer">
             Request Order</button>
     </div>
 

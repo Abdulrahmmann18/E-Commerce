@@ -23,6 +23,11 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.navlinksService.setNavLinksStates(false, false, true);
+    this.wishListService.getLoggedUserWishlist().subscribe({
+      next : (res) => {
+        this.wishListService.wishlistIds.next(res.data.map((item : any) => item._id));
+      }
+    })
     this.productsService.getAllProductsAPI().subscribe({
       next : (res) => {
         this.allProducts.set(res.data);

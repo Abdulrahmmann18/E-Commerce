@@ -1,5 +1,5 @@
 import { AuthService } from './../../core/services/auth/auth.service';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NavlinksService } from '../../core/services/navLinks/navlinks.service';
 
@@ -11,46 +11,17 @@ import { NavlinksService } from '../../core/services/navLinks/navlinks.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
 
-  registerLinkState = signal<boolean>(false);
-  loginLinkState = signal<boolean>(false);
-  logoutLinkState = signal<boolean>(false);
 
   private navlinksService : NavlinksService = inject(NavlinksService);
   private authService : AuthService = inject(AuthService);
   private router : Router = inject(Router);
 
+  registerLinkState : Signal<boolean> = computed(this.navlinksService.registerLinkState)
+  loginLinkState : Signal<boolean> = computed(this.navlinksService.loginLinkState)
+  logoutLinkState : Signal<boolean> = computed(this.navlinksService.logoutLinkState)
 
-  ngOnInit(): void {
-    this.checkRegisterLinkState();
-    this.checkLoginLinkState();
-    this.checkLogoutLinkState();
-  }
-
-  checkRegisterLinkState(){
-    this.navlinksService.registerLinkState.subscribe({
-      next : () => {
-        this.registerLinkState.set(this.navlinksService.registerLinkState.getValue());
-      }
-    });
-  }
-  checkLoginLinkState(){
-    this.navlinksService.loginLinkState.subscribe({
-      next : () => {
-        this.loginLinkState.set(this.navlinksService.loginLinkState.getValue());
-      }
-    });
-    
-  }
-  checkLogoutLinkState(){
-    this.navlinksService.logoutLinkState.subscribe({
-      next : () => {
-        this.logoutLinkState.set(this.navlinksService.logoutLinkState.getValue());
-      }
-    });
-    
-  }
 
   logout()
   {

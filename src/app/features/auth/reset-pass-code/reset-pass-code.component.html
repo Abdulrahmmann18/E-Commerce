@@ -5,13 +5,13 @@
         <div class="my-6">
             <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Verification Code</label>
             <input type="text" formControlName="resetCode"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-600 dark:focus:border-green-600" />
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5" />
 
             @if (resetPassCodeForm.get('resetCode')?.touched)
             {
             @if (resetPassCodeForm.get('resetCode')?.getError('required'))
             {
-            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
                 role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor" viewBox="0 0 20 20">
@@ -25,7 +25,7 @@
             }
             @else if (resetPassCodeForm.get('resetCode')?.getError('pattern'))
             {
-            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
                 role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor" viewBox="0 0 20 20">
@@ -43,7 +43,7 @@
 
         <div class="my-6">
             <button type="submit" [disabled]="!resetPassCodeForm.valid"
-                class="text-white disabled:cursor-not-allowed disabled:bg-green-300 cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                class="text-white disabled:cursor-not-allowed disabled:bg-green-300 cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3.5 text-center">
                 Verify
                 @if (isLoading()) {
                 <i class="fa-solid fa-spinner fa-spin"></i>

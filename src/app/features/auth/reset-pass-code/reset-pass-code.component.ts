@@ -25,7 +25,7 @@ export class ResetPassCodeComponent {
   }
 
   resetPassCodeForm : FormGroup = new FormGroup({
-    resetCode : new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{6}$/)])
+    resetCode : new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{5,6}$/)])
   })
 
   submitForm()

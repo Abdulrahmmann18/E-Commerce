@@ -48,12 +48,6 @@ export class LoginComponent implements OnInit {
             this.authService.setUserData();
             // 3- go to home page  
             this.router.navigate(['/home']); 
-            this.wishListService.getLoggedUserWishlist().subscribe({
-              next : (res) => {
-                this.wishListService.wishlistIds.next(res.data.map((item : any) => item._id));
-                console.log(this.wishListService.wishlistIds.getValue());
-              }
-            })
           }, 1000);
         },
         error : (err) => {   

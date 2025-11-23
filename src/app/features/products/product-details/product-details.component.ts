@@ -1,6 +1,6 @@
 import { ProductData } from './../../../core/interfaces/product-data';
 import { ProductsService } from './../../../core/services/products/products.service';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { NavlinksService } from '../../../core/services/navLinks/navlinks.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
@@ -14,7 +14,7 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit {
   private navlinksService : NavlinksService = inject(NavlinksService);
   private activatedRoute : ActivatedRoute = inject(ActivatedRoute);
   private productsService : ProductsService = inject(ProductsService);
@@ -30,11 +30,11 @@ export class ProductDetailsComponent {
   ngOnInit(): void {
     this.navlinksService.setNavLinksStates(false, false, true);
     this.activatedRoute.paramMap.subscribe(
-      (param) => {
+      (param) => {     
         this.pId =  param.get('productId');
         this.productsService.getSpecProductAPI(this.pId).subscribe({
           next : (res) => {
-            this.pInfo.set(res.data);
+            this.pInfo.set(res.data);         
             this.checked = this.wishListService.isInWishlist(this.pInfo()._id);
           }
         })

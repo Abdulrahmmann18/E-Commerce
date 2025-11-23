@@ -27,6 +27,7 @@ export class WishListService {
   {
     this.wishlistIds.next(this.wishlistIds.getValue().filter(item=>item !== pId));
     console.log(this.wishlistIds.getValue());
+    
     return this.httpClient.delete(
       `${environment.baseURL}wishlist/${pId}`
     )

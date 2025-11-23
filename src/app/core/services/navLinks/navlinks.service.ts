@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,16 +6,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavlinksService {
 
-  registerLinkState : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  loginLinkState : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  logoutLinkState : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  registerLinkState : WritableSignal<boolean> = signal<boolean>(true);
+  loginLinkState : WritableSignal<boolean> = signal<boolean>(false);
+  logoutLinkState : WritableSignal<boolean> = signal<boolean>(false);
 
 
   setNavLinksStates(regState : boolean, loginState : boolean, logoutState : boolean)
   {
-    this.registerLinkState.next(regState);
-    this.loginLinkState.next(loginState);
-    this.logoutLinkState.next(logoutState);
+    this.registerLinkState.set(regState);
+    this.loginLinkState.set(loginState);
+    this.logoutLinkState.set(logoutState);
   }
   
 }

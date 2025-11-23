@@ -24,7 +24,7 @@ export class ProductDetailsComponent implements OnInit {
 
   pId : string|null = "";
   pInfo = signal<ProductData>({} as ProductData);
-  checked : boolean = false;
+  checked = signal<boolean>(false);
   id = Math.random().toString(36).substring(2, 9); // unique id
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
         this.productsService.getSpecProductAPI(this.pId).subscribe({
           next : (res) => {
             this.pInfo.set(res.data);         
-            this.checked = this.wishListService.isInWishlist(this.pInfo()._id);
+            this.checked.set(this.wishListService.isInWishlist(this.pInfo()._id));
           }
         })
       }
@@ -61,8 +61,8 @@ export class ProductDetailsComponent implements OnInit {
   };
   
   onToggle(event: Event) {
-    this.checked = !this.checked;
-    if (this.checked) {
+    this.checked.set(!this.checked());
+    if (this.checked()) {
       this.wishListService.addProductToWishlist(this.pId).subscribe({
         next : (res) => {
           this.toastrService.success(res.message, "Wish List operations!");

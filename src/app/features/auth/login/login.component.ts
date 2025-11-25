@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userToken', res.token);
             // 2- service to set user data to be shared to home 
             this.authService.setUserData();
-            // 3- go to home page  
+            // 3- go to home page (programming routing) 
             this.router.navigate(['/home']); 
-          }, 1000);
+          }, 1500);
         },
         error : (err) => {   
           this.isLoading.set(false);

@@ -52,10 +52,10 @@ export class RegisterComponent implements OnInit {
           this.responseIsOk.set(1);
           this.responseMsg.set(res.message);
 
-          // go to login page
+          // go to login page (programming routing)
           setTimeout(()=>{           
             this.router.navigate(['/login']);            
-          }, 2000);
+          }, 1500);
         },
         error : (err) => {   
           this.isLoading.set(false);

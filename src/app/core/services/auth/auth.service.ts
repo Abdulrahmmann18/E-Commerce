@@ -42,6 +42,7 @@ export class AuthService {
   setUserData()
   {
     this.loginedUserData.next(jwtDecode(localStorage.getItem('userToken')!)); 
+    // id is used in order
     localStorage.setItem('userId', this.loginedUserData.getValue()?.id!)  
   }
  

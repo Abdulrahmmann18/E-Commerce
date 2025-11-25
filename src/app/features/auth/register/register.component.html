@@ -3,7 +3,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
 
         <div class="my-6">
-            <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Name</label>
+            <label class="block mb-2 text-sm font-medium text-green-600">Name</label>
             <input type="text" formControlName="name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5" />
 
@@ -57,7 +57,7 @@
         </div>
 
         <div class="my-6">
-            <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Email</label>
+            <label class="block mb-2 text-sm font-medium text-green-600">Email</label>
             <input type="email" formControlName="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5" />
 
@@ -96,7 +96,7 @@
         </div>
 
         <div class="my-6">
-            <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Password</label>
+            <label class="block mb-2 text-sm font-medium text-green-600">Password</label>
             <input type="password" formControlName="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5" />
 
@@ -140,7 +140,7 @@
         </div>
 
         <div class="my-6">
-            <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Repassword</label>
+            <label class="block mb-2 text-sm font-medium text-green-600">Repassword</label>
             <input type="password" formControlName="rePassword"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5" />
             @if (registerForm.get('rePassword')?.touched)
@@ -163,7 +163,7 @@
         </div>
 
         <div class="my-6">
-            <label class="block mb-2 text-sm font-medium text-green-600 dark:text-white">Phone</label>
+            <label class="block mb-2 text-sm font-medium text-green-600">Phone</label>
             <input type="text" formControlName="phone"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full ps-10 p-2.5 " />
 

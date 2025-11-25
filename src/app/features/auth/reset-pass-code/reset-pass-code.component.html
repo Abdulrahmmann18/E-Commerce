@@ -45,9 +45,6 @@
             <button type="submit" [disabled]="!resetPassCodeForm.valid"
                 class="text-white disabled:cursor-not-allowed disabled:bg-green-300 cursor-pointer bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3.5 text-center">
                 Verify
-                @if (isLoading()) {
-                <i class="fa-solid fa-spinner fa-spin"></i>
-                }
             </button>
         </div>
 

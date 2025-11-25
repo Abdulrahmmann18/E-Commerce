@@ -19,7 +19,6 @@ export class ResetPassComponent {
     this.navlinksService.setNavLinksStates(true, false, false);
   }
 
-  isLoading = signal<boolean>(false);
   responseMsg = signal<string>("");
   responseIsOk = signal<number>(0)
 
@@ -31,10 +30,8 @@ export class ResetPassComponent {
   submitForm()
   {
     if (this.resetPassForm.valid) {
-      this.isLoading.set(true);
       this.authService.resetPassword(this.resetPassForm.value).subscribe({
         next : (res) => {
-          this.isLoading.set(false);
           this.responseIsOk.set(1);
           setTimeout(()=>{
             // 1- save token in local storage
@@ -46,7 +43,6 @@ export class ResetPassComponent {
           }, 1000);
         },
         error : (err) => {   
-          this.isLoading.set(false);
           this.responseIsOk.set(-1);   
           this.responseMsg.set(err.error.message)
         }

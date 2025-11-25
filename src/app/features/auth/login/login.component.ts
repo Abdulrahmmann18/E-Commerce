@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     this.navlinksService.setNavLinksStates(true, false, false);
   }
 
-  isLoading = signal<boolean>(false);
   responseMsg = signal<string>("");
   responseIsOk = signal<number>(0)
 
@@ -34,10 +33,8 @@ export class LoginComponent implements OnInit {
   submitForm()
   {
     if (this.loginForm.valid) {
-      this.isLoading.set(true);
       this.authService.login(this.loginForm.value).subscribe({
         next : (res) => {
-          this.isLoading.set(false);
           this.responseIsOk.set(1);
           this.responseMsg.set(res.message);
 
@@ -51,7 +48,6 @@ export class LoginComponent implements OnInit {
           }, 1500);
         },
         error : (err) => {   
-          this.isLoading.set(false);
           this.responseIsOk.set(-1);   
           this.responseMsg.set(err.error.message)
 

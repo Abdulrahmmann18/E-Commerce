@@ -36,7 +36,7 @@
 
     <div class="flex items-center justify-center my-2">
         <!-- hidden checkbox -->
-        <input type="checkbox" id="wishlist-{{id}}" class="peer hidden" [checked]="checked"
+        <input type="checkbox" id="wishlist-{{id}}" class="peer hidden" [checked]="checked()"
             (change)="onToggle($event, oneProduct._id)" />
 
         <!-- clickable heart -->
@@ -55,7 +55,7 @@
 
     <div>
         <button (click)="addToCart(oneProduct._id)"
-            class="cursor-pointer text-white translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all w-full bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add
+            class="cursor-pointer text-white sm:translate-y-full sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:transition-all w-full bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add
             to cart</button>
 
     </div>

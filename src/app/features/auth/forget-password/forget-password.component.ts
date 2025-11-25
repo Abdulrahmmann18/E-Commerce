@@ -16,7 +16,6 @@ export class ForgetPasswordComponent implements OnInit {
   private authService : AuthService = inject(AuthService);
   private router : Router = inject(Router);
 
-  isLoading = signal<boolean>(false);
   responseMsg = signal<string>("");
   responseIsOk = signal<number>(0)
 
@@ -31,11 +30,9 @@ export class ForgetPasswordComponent implements OnInit {
   submitForm()
   {
     if (this.forgetPassForm.valid) {
-      this.isLoading.set(true);
       this.authService.forgetPassword(this.forgetPassForm.value).subscribe({
 
         next : (res) => {
-          this.isLoading.set(false);
           this.responseIsOk.set(1);
           this.responseMsg.set(res.message);
           setTimeout(()=>{
@@ -44,7 +41,6 @@ export class ForgetPasswordComponent implements OnInit {
           }, 2000);
         },
         error : (err) => {   
-          this.isLoading.set(false);
           this.responseIsOk.set(-1);   
           this.responseMsg.set(err.error.message)
         }

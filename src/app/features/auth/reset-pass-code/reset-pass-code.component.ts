@@ -16,7 +16,6 @@ export class ResetPassCodeComponent {
   private authService : AuthService = inject(AuthService);
   private router : Router = inject(Router);
 
-  isLoading = signal<boolean>(false);
   responseMsg = signal<string>("");
   responseIsOk = signal<number>(0)
 
@@ -31,11 +30,9 @@ export class ResetPassCodeComponent {
   submitForm()
   {
     if (this.resetPassCodeForm.valid) {
-      this.isLoading.set(true);
       this.authService.verifyResetCode(this.resetPassCodeForm.value).subscribe({
 
         next : (res) => {
-          this.isLoading.set(false);
           this.responseIsOk.set(1);
           this.responseMsg.set(res.status);
           setTimeout(()=>{
@@ -44,7 +41,6 @@ export class ResetPassCodeComponent {
           }, 2000);
         },
         error : (err) => {   
-          this.isLoading.set(false);
           this.responseIsOk.set(-1);   
           this.responseMsg.set(err.error.message)
         }

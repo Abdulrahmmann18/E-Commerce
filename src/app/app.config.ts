@@ -7,6 +7,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { provideToastr } from 'ngx-toastr';
 import { headerInterceptor } from './core/interceptors/header/header.interceptor';
 import { errorInterceptor } from './core/interceptors/error/error.interceptor';
+import { loadingScreenInterceptor } from './core/interceptors/loading/loading-screen.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes, withInMemoryScrolling({scrollPositionRestoration : 'top'})), 
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(), withInterceptors([headerInterceptor, errorInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([headerInterceptor, errorInterceptor, loadingScreenInterceptor])),
     provideAnimations(),
     provideToastr(
       {

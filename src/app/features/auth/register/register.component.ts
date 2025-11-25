@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
     this.navlinksService.setNavLinksStates(false, true, false);     
   }
   
-  isLoading = signal<boolean>(false);
   responseMsg = signal<string>("");
   responseIsOk = signal<number>(0);
 
@@ -45,10 +44,8 @@ export class RegisterComponent implements OnInit {
   submitForm()
   {
     if (this.registerForm.valid) {
-      this.isLoading.set(true);
       this.authService.signUp(this.registerForm.value).subscribe({
         next : (res) => {
-          this.isLoading.set(false);
           this.responseIsOk.set(1);
           this.responseMsg.set(res.message);
 
@@ -58,7 +55,6 @@ export class RegisterComponent implements OnInit {
           }, 1500);
         },
         error : (err) => {   
-          this.isLoading.set(false);
           this.responseIsOk.set(-1);   
           this.responseMsg.set(err.error.message)
         }
